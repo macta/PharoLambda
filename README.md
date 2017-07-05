@@ -1,1 +1,3 @@
-Experiments calling pharo from Lambda
+Basic example of calling Pharo from Lambda.
+
+Loosely based on this [tutorial](https://aws.amazon.com/blogs/compute/scripting-languages-for-aws-lambda-running-php-ruby-and-go/) for other languages.You will need to setup an AWS Lambda account and create a function  using this [example](./pharoLambda.js).You can also create a simple Alexa skill to call this function by following the gist of this [example](https://github.com/Donohue/alexa).

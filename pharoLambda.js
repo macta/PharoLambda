@@ -7,20 +7,5 @@
 const exec = require('child_process').exec;
 
 exports.handler = function(event, context) {
-	const cmdLine = "./pharo Pharo.image --no-default-preferences exec 'Lambda processJSON: '\\''" 
-    	+ JSON.stringify(event) + "'\\'''";
-    	
-    console.log("exec(\"" + cmdLine + "\")");
-    
-    exec(cmdLine, (error, stdoutResult, stderrResult) => {
-    	if(error) {
-    		console.error(`exec error: ${error}`);
-       		context.done(error, "lambda exec failure");
-       	} else {
-       		console.log(`exec success`);
-       		const result = JSON.parse(stdoutResult);
-		
-			context.succeed({ "response": result });
-       	}
-    });
+	const cmdLine = "./pharo Pharo.image --no-default-preferences exec 'Lambda processJSON: '\\''" 		+ JSON.stringify(event) + "'\\'''";			console.log("exec(\"" + cmdLine + "\")");		exec(cmdLine, (error, stdoutResult, stderrResult) => {		if(error) {			console.error(`exec error: ${error}`);			context.done(error, "lambda exec failure");		} else {			console.log(`exec success`);			const result = JSON.parse(stdoutResult);						context.succeed({ "response": result });		}	 });
 }
