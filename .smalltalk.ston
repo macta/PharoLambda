@@ -2,7 +2,7 @@ SmalltalkCISpec {
   #loading : [
     SCIMetacelloLoadSpec {
           #baseline : 'Lambda',
-          #directory : 'packages',
+          #directory : 'Lambda.package',
           #platforms : [ #pharo ]
         }
   ],
