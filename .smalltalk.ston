@@ -1,0 +1,13 @@
+SmalltalkCISpec {
+  #loading : [
+    // List Of Load Specifications...
+    SCIMetacelloLoadSpec {
+          #baseline : 'Lambda',
+          #directory : 'packages',
+          #platforms : [ #pharo ]
+        }
+  ],
+  #testing : {
+    // TestCase Selection...
+  }
+}

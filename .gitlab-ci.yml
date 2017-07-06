@@ -1,0 +1,61 @@
+# Docker image
+image: giantswarm/tiny-tools
+
+# add 'node_modules' to cache for speeding up builds
+cache:
+  key: "2017-06-01" # or see: https://gitlab.msu.edu/help/ci/variables/README.md
+  paths:
+    - pharo
+
+before_script:
+  - echo Gitlab job started $(date)
+
+# define Gitlab pipeline stages
+stages:
+  - build
+  - test
+  - deploy
+  
+# job for experimentation on a branch
+spike:
+  stage: build
+  script:
+    - npm install --production 
+    - node build.js --deploy
+  except:
+    - master # trigger on all branches expect 'master'
+
+generate:
+  stage: build
+  script:
+    # if [[ ! -e pharo ]]; then ./extractRuntime.sh; fi
+    - unzip ./Runtime/Pharo60-Linux.zip ./build
+    - cd build
+    - ./pharo Pharo.image eval 10 factorial
+  only:
+    - master # only the 'master' branch
+  artifacts:
+    paths:
+      - build # share artifacts with other jobs
+    # expire_in: 60 minutes
+  
+# 'pages' job will deploy and build site to 'public' path
+lambda:
+  stage: deploy
+  image: infrastructureascode/aws-cli  # aws cli image
+  variables:
+    GIT_STRATEGY: none # stop checkout, as using assets in /public
+  script:
+    - pwd
+    # recreate public directory due to gitlab bug?
+    - if [[ ! -e static ]]; then mv public static; fi
+    - rm -Rf public
+    - mkdir public
+    - cp -r static/* public
+    # - rm -r build
+    - ls -pAl --group-directories-first public
+  artifacts:
+    paths:
+      - public
+  only:
+    - master # avoid branches, although branch strategy is none
