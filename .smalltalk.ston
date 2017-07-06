@@ -1,6 +1,5 @@
 SmalltalkCISpec {
   #loading : [
-    // List Of Load Specifications...
     SCIMetacelloLoadSpec {
           #baseline : 'Lambda',
           #directory : 'packages',
@@ -8,6 +7,5 @@ SmalltalkCISpec {
         }
   ],
   #testing : {
-    // TestCase Selection...
   }
 }
