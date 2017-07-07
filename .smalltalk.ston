@@ -3,7 +3,8 @@ SmalltalkCISpec {
     SCIMetacelloLoadSpec {
           #baseline : 'Lambda',
           #directory : '',
-          #platforms : [ #pharo ]
+          #platforms : [ #pharo ],
+          #failOn : [ #OCUndeclaredVariableWarning ]
         }
   ],
   #testing : {
