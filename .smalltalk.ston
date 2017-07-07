@@ -2,8 +2,11 @@ SmalltalkCISpec {
   #loading : [
     SCIMetacelloLoadSpec {
           #baseline : 'Lambda',
-          #directory : './',
+          #directory : '',
           #platforms : [ #pharo ]
-    }
-  ]
+        }
+  ],
+  #testing : {
+        #failOnZeroTests : false
+  }
 }
