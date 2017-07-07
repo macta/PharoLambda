@@ -6,7 +6,7 @@ processJSON: aString
 	"FileStream stdout nextPutAll: Smalltalk arguments printString; lf.
 	FileStream stdout nextPutAll: aString; lf."
 	
-	json := nil. "NeoJSONReader fromString: aString."
+	json := NeoJSONReader fromString: aString.
 	
 	result := self processRequest: json.
 	
