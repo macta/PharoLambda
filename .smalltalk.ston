@@ -4,8 +4,6 @@ SmalltalkCISpec {
           #baseline : 'Lambda',
           #directory : './',
           #platforms : [ #pharo ]
-        }
-  ],
-  #testing : {
-  }
+    }
+  ]
 }
